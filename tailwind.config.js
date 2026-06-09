@@ -1,19 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class', // ← activation du mode classe
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        // Ces variables seront définies dans index.css
-        bg: 'var(--bg)',
-        surface: 'var(--surface)',
-        border: 'var(--border)',
-        accent: 'var(--accent)',
-        'accent-light': 'var(--accent-light)',
-        muted: 'var(--muted)',
-        text: 'var(--text)',
-        'text-dim': 'var(--text-dim)',
+        bg: '#0A0A0F',
+        surface: '#13131A',
+        border: '#1E1E2E',
+        accent: '#6366F1',
+        'accent-light': '#818CF8',
+        muted: '#64748B',
+        text: '#E2E8F0',
+        'text-dim': '#94A3B8',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
