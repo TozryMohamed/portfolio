@@ -1,12 +1,12 @@
-// Timeline item compacte
+// src/pages/About.jsx
+import { Link } from 'react-router-dom'
+
+// Timeline compacte
 function TimelineItem({ year, title, place, description, isLast }) {
   return (
     <div className="relative pl-8">
-      {/* Ligne verticale */}
       {!isLast && <div className="absolute left-[7px] top-6 w-px h-full bg-border" />}
-      {/* Point */}
       <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 border-accent bg-bg" />
-
       <div className="pb-10">
         <span className="text-xs font-mono text-accent">{year}</span>
         <h3 className="font-semibold text-text mt-0.5">{title}</h3>
@@ -17,38 +17,33 @@ function TimelineItem({ year, title, place, description, isLast }) {
   )
 }
 
-const timeline = [
+// Données du CV
+const education = [
   {
-    year: '2024 — Présent',
-    title: 'Développeur Full-Stack Senior',
-    place: 'TechCorp, Paris',
-    description: 'Développement d\'applications SaaS B2B avec React, Next.js et Node.js. Lead technique sur 3 projets.',
+    year: '2025 — Présent',
+    title: 'Master Professionnel en Développement des Systèmes Informatiques et Réseaux',
+    place: 'ISET Sfax',
+    description: 'Spécialisation en développement web et mobile (Laravel, Flutter, PHP, MySQL).',
   },
   {
-    year: '2022 — 2024',
-    title: 'Développeur Front-End',
-    place: 'AgenceWeb, Lyon',
-    description: 'Intégration et développement d\'interfaces utilisateurs modernes. Migration vers React et TypeScript.',
+    year: '2022 — 2025',
+    title: 'Licence en Technologie d’Informatique',
+    place: 'ISET Kasserine',
+    description: 'Formation en développement d’applications, bases de données et réseaux.',
   },
   {
-    year: '2021 — 2022',
-    title: 'Master Informatique',
-    place: 'Université de Lyon',
-    description: 'Spécialisation en génie logiciel et systèmes distribués. Mémoire sur les micro-services.',
-  },
-  {
-    year: '2019 — 2021',
-    title: 'Licence Informatique',
-    place: 'IUT de Grenoble',
-    description: 'Formation en développement web, algorithmes et bases de données.',
+    year: '2020 — 2021',
+    title: 'Baccalauréat en Économie et gestion',
+    place: 'Lycée secondaire Thelepte',
+    description: 'Section économique et gestion.',
   },
 ]
 
 const techStack = [
-  { cat: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'TailwindCSS', 'Vue 3'] },
-  { cat: 'Backend', items: ['Node.js', 'Express', 'Nest.js', 'Python', 'REST/GraphQL'] },
-  { cat: 'Base de données', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma'] },
-  { cat: 'DevOps', items: ['Docker', 'GitHub Actions', 'Vercel', 'AWS S3', 'Linux'] },
+  { cat: 'Front-End', items: ['JavaScript', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'Flutter', 'Dart'] },
+  { cat: 'Back-End', items: ['PHP', 'Firebase', 'Supabase'] },
+  { cat: 'Base de données', items: ['MySQL'] },
+  { cat: 'Framework', items: ['Laravel'] },
 ]
 
 export default function About() {
@@ -64,28 +59,66 @@ export default function About() {
           Qui suis-<span className="text-gradient">je</span> ?
         </h1>
         <p className="text-text-dim max-w-2xl leading-relaxed text-lg">
-          Développeur full-stack passionné avec 3 ans d'expérience dans la création d'applications web modernes.
-          J'aime transformer des idées complexes en interfaces élégantes et des architectures robustes.
+          Étudiant en Master Professionnel en Développement des Systèmes Informatiques et Réseaux,
+          spécialisé en développement web et mobile avec Laravel, Flutter, PHP et MySQL.
+          Passionné par la création d’applications performantes et intuitives.
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-16">
-        {/* Timeline */}
+        {/* Parcours (éducation) */}
         <div>
           <h2 className="text-lg font-semibold mb-8 flex items-center gap-2">
-            <span className="text-accent">◆</span> Parcours
+            <span className="text-accent">◆</span> Formation
           </h2>
           <div>
-            {timeline.map((item, i) => (
-              <TimelineItem key={i} {...item} isLast={i === timeline.length - 1} />
+            {education.map((item, i) => (
+              <TimelineItem
+                key={i}
+                year={item.year}
+                title={item.title}
+                place={item.place}
+                description={item.description}
+                isLast={i === education.length - 1}
+              />
             ))}
+          </div>
+
+          {/* Langues */}
+          <div className="mt-8">
+            <h3 className="text-sm font-mono text-accent mb-3">Langues</h3>
+            <div className="flex flex-wrap gap-2">
+              {['Arabe (natif)', 'Anglais (courant)', 'Français (intermédiaire)'].map((lang) => (
+                <span
+                  key={lang}
+                  className="text-sm px-3 py-1 rounded-lg bg-surface border border-border text-text-dim"
+                >
+                  {lang}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Centres d'intérêt */}
+          <div className="mt-6">
+            <h3 className="text-sm font-mono text-accent mb-3">Centres d’intérêt</h3>
+            <div className="flex flex-wrap gap-2">
+              {['Jeux vidéo', 'Développement créatif', 'Tech & innovations'].map((interest) => (
+                <span
+                  key={interest}
+                  className="text-sm px-3 py-1 rounded-lg bg-surface border border-border text-text-dim"
+                >
+                  {interest}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Stack technique */}
         <div>
           <h2 className="text-lg font-semibold mb-8 flex items-center gap-2">
-            <span className="text-accent">◆</span> Stack technique
+            <span className="text-accent">◆</span> Compétences techniques
           </h2>
           <div className="space-y-6">
             {techStack.map(({ cat, items }) => (
@@ -110,10 +143,10 @@ export default function About() {
             <p className="text-sm font-mono text-accent mb-3">// Mes valeurs</p>
             <ul className="space-y-2">
               {[
-                'Code propre & maintenable',
-                'Performance & accessibilité',
-                'Collaboration & communication',
-                'Amélioration continue',
+                'Code propre et maintenable',
+                'Veille technologique continue',
+                'Travail en équipe et partage',
+                'Solutions centrées utilisateur',
               ].map((v) => (
                 <li key={v} className="flex items-center gap-2 text-sm text-text-dim">
                   <span className="w-1 h-1 rounded-full bg-accent" />
@@ -121,6 +154,16 @@ export default function About() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Bouton vers projets (optionnel) */}
+          <div className="mt-8 text-center md:text-left">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-light transition-colors"
+            >
+              Voir mes réalisations →
+            </Link>
           </div>
         </div>
       </div>
