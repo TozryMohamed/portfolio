@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquer l'espace admin
+Disallow: /admin/
+Disallow: /admin/login
+
+# Sitemap
+Sitemap: https://portfolio-phi-eight-vkhngik7nm.vercel.app/sitemap.xml
